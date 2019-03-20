@@ -1,0 +1,51 @@
+from tkinter import*
+from tkinter import messagebox
+import datetime
+import time
+
+window=Tk()
+window.title("reminder")
+window.geometry("600x200")
+Label(window, text="what you want to be reminded of",).grid(row='0', column='0')
+Label(window, text="enter hours").grid(row='1', column='0')
+Label(window, text="enter minutes").grid(row='2', column='0')
+
+
+e1=Entry(window)
+e2=Entry(window)
+e3=Entry(window)
+e1.grid(row='0', column='1')
+e2.grid(row='1', column='1')
+e3.grid(row='2',column='1')
+
+def remainder():
+    
+    t=int(e2.get())
+    t2=int(e3.get())
+    t1=e1.get()
+    while(t):
+        ''',sec=divmod(t,60)
+        hrs,mins=divmod(mins,60)'''
+        c=int(time.strftime('%H'))
+        m=int(time.strftime('%M'))
+        right=str(t2-m)
+        left=str(t-c)
+        if t==c and t2==m:
+            messagebox.showinfo("notification",t1)
+            messagebox.withdraw()           
+        else:
+            c=int(time.strftime('%H'))
+            m=int(time.strftime('%M'))
+            if t==c and t2==m:
+                messagebox.showinfo("notification",t1)
+                messagebox.withdraw()           
+       
+           
+Button(window, text="remind", command=remainder).grid(row='3', column='0')
+Button(window, text="cancel", command=window.destroy).grid(row='3', column='1')
+
+window.mainloop()
+'''h1=threading.thread(target=remainder,args="")
+h1.start()
+h1.join()'''
+
